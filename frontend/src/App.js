@@ -13,7 +13,7 @@ class App extends Component {
 
 
   componentDidMount(){
-    const url = "http://localhost:3000/"
+    const url = "http://localhost:5000/"
     fetch(url)
     .then((response) => response.json())
     .then((response) => this.setState( { reviews: response} ) );
