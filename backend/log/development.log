@@ -613,3 +613,99 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 2.2ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "foods"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "foods"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveCRatingFromFood (20171004091809)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afoods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "c_rating" integer DEFAULT NULL, "m_rating" integer DEFAULT NULL, "r_rating" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "afoods" ("id","name","c_rating","m_rating","r_rating","created_at","updated_at")
+                     SELECT "id","name","c_rating","m_rating","r_rating","created_at","updated_at" FROM "foods"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "foods"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "foods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "m_rating" integer DEFAULT NULL, "r_rating" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "foods" ("id","name","m_rating","r_rating","created_at","updated_at")
+                     SELECT "id","name","m_rating","r_rating","created_at","updated_at" FROM "afoods"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afoods"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004091809"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveMRatingFromFood (20171004091934)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afoods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "m_rating" integer DEFAULT NULL, "r_rating" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "afoods" ("id","name","m_rating","r_rating","created_at","updated_at")
+                     SELECT "id","name","m_rating","r_rating","created_at","updated_at" FROM "foods"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "foods"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "foods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "r_rating" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "foods" ("id","name","r_rating","created_at","updated_at")
+                     SELECT "id","name","r_rating","created_at","updated_at" FROM "afoods"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "afoods"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004091934"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to RemoveRRatingFromFood (20171004091944)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "afoods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "r_rating" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "afoods" ("id","name","r_rating","created_at","updated_at")
+                     SELECT "id","name","r_rating","created_at","updated_at" FROM "foods"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "foods"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "foods" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "foods" ("id","name","created_at","updated_at")
+                     SELECT "id","name","created_at","updated_at" FROM "afoods"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "afoods"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004091944"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddRatingToFood (20171004091959)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "foods" ADD "rating" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004091959"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAuthorToFood (20171004092124)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "foods" ADD "author" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004092124"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddCommentToFood (20171004092135)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "foods" ADD "comment" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171004092135"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "foods"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "foods" ("name", "created_at", "updated_at", "rating", "author", "comment") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Lettuce"], ["created_at", "2017-10-04 09:21:50.316316"], ["updated_at", "2017-10-04 09:21:50.316316"], ["rating", "4"], ["author", "Chris"], ["comment", "Crunchy!"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "foods" ("name", "created_at", "updated_at", "rating", "author", "comment") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Water"], ["created_at", "2017-10-04 09:21:50.318816"], ["updated_at", "2017-10-04 09:21:50.318816"], ["rating", "2"], ["author", "Ben"], ["comment", "Tasty! I like water."]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "foods" ("name", "created_at", "updated_at", "rating", "author", "comment") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Whiskey"], ["created_at", "2017-10-04 09:21:50.320998"], ["updated_at", "2017-10-04 09:21:50.320998"], ["rating", "3"], ["author", "Guy"], ["comment", "Nicccccccce."]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "foods" ("name", "created_at", "updated_at", "rating", "author", "comment") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Tomato"], ["created_at", "2017-10-04 09:21:50.323241"], ["updated_at", "2017-10-04 09:21:50.323241"], ["rating", "1"], ["author", "Matthew"], ["comment", "Very round."]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "foods" ("name", "created_at", "updated_at", "rating", "author", "comment") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Cold Leftover Pizza Crust"], ["created_at", "2017-10-04 09:21:50.325157"], ["updated_at", "2017-10-04 09:21:50.325157"], ["rating", "5"], ["author", "Keith"], ["comment", "If only God could send a poet to describe this beauty."]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mFood Load (1.0ms)[0m  [1m[34mSELECT  "foods".* FROM "foods" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mFood Load (1.1ms)[0m  [1m[34mSELECT  "foods".* FROM "foods" LIMIT ?[0m  [["LIMIT", 11]]
