@@ -4,7 +4,7 @@ class AppContainer extends React.Component {
 
     render() {
         return(
-            <List/>, document.querySelector('main');
+            <List/>, document.querySelector('main')
         )
     }
 
