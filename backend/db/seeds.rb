@@ -1,10 +1,10 @@
 
 Food.delete_all
-Food.create({name:"Lettuce", c_rating:4, m_rating:5, r_rating: 6})
-Food.create({name:"Water", c_rating:8, m_rating:6, r_rating: 1})
-Food.create({name:"Whiskey", c_rating:2, m_rating:10, r_rating: 500})
-Food.create({name:"Tomato", c_rating:5, m_rating:2, r_rating: 10})
-Food.create({name:"Cold Leftover Pizza Crust", c_rating:6, m_rating:1, r_rating: 99})
+Food.create({name:"Lettuce", rating:4, author: "Chris", comment: "Crunchy!"})
+Food.create({name:"Water", rating:2, author: "Ben", comment: "Tasty! I like water."})
+Food.create({name:"Whiskey", rating:3, author: "Guy", comment: "Nicccccccce."})
+Food.create({name:"Tomato", rating:1, author: "Matthew", comment: "Very round." })
+Food.create({name:"Cold Leftover Pizza Crust", rating: 5, author: "Keith", comment: "If only God could send a poet to describe this beauty."})
 
 
 # This file should contain all the record creation needed to seed the database with its default values.
